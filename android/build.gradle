@@ -8,16 +8,10 @@ buildscript {
         google()
         mavenCentral()
         maven {
-            url 'https://maven.aliyun.com/repository/public/'
+            url 'https://maven.aliyun.com/repository/google'
         }
         maven {
-            url 'https://maven.aliyun.com/repository/central/'
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/google/'
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/gradle-plugin/'
+            url 'https://maven.aliyun.com/repository/jcenter'
         }
     }
 
@@ -34,22 +28,16 @@ rootProject.allprojects {
         google()
         mavenCentral()
         maven {
-            url 'https://maven.aliyun.com/repository/public/'
+            url 'https://maven.aliyun.com/repository/google'
         }
         maven {
-            url 'https://maven.aliyun.com/repository/central/'
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/google/'
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/gradle-plugin/'
+            url 'https://maven.aliyun.com/repository/jcenter'
         }
     }
 }
 
 apply plugin: 'com.android.library'
-// apply plugin: 'com.google.protobuf'
+apply plugin: 'com.google.protobuf'
 
 android {
     namespace "com.pauldemarco.flutter_blue"
@@ -58,29 +46,29 @@ android {
     defaultConfig {
         minSdkVersion 19
     }
-    //sourceSets {
-        //main {
-            //proto {
-            //    srcDir '../protos'
-            //}
-        //}
-    //}
+    sourceSets {
+        main {
+            proto {
+               srcDir '../protos'
+            }
+        }
+    }
 }
 
-//protobuf {
-//  protoc {
-//       artifact = 'com.google.protobuf:protoc:3.11.4'
-//    }
-//    generateProtoTasks {
-//        all().each { task ->
-//            task.builtins {
-//                java {
-//                    option "lite"
-//                }
-//            }
-//        }
-//    }
-//}
+protobuf {
+ protoc {
+      artifact = 'com.google.protobuf:protoc:3.11.4'
+   }
+   generateProtoTasks {
+       all().each { task ->
+           task.builtins {
+               java {
+                   option "lite"
+               }
+           }
+       }
+   }
+}
 
 dependencies {
     implementation 'com.google.protobuf:protobuf-javalite:3.11.4'
