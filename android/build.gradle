@@ -57,13 +57,13 @@ android {
     defaultConfig {
         minSdkVersion 19
     }
-    sourceSets {
-        main {
-            proto {
-                srcDir '../protos'
-            }
-        }
-    }
+    //sourceSets {
+        //main {
+            //proto {
+            //    srcDir '../protos'
+            //}
+        //}
+    //}
 }
 
 protobuf {
